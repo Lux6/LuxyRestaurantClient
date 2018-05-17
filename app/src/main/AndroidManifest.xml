@@ -18,7 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ComandaClient"></activity>
+        <activity android:name=".ComandaClient" />
+        <activity android:name=".CrearComanda" />
+        <activity android:name=".EditarComanda"></activity>
     </application>
 
 </manifest>

@@ -19,8 +19,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch ( view.getId() ) {
 
             case R.id.btnCrearComanda:
+                startActivity( new Intent( MainActivity.this , CrearComanda.class ) );
                 break;
             case R.id.btnEditarComanda:
+                startActivity( new Intent( MainActivity.this , EditarComanda.class ) );
                 break;
             case R.id.btnComandaClient:
                 startActivity( new Intent( MainActivity.this , ComandaClient.class ) );

@@ -34,7 +34,7 @@ public class ConnexioBaseDades extends Activity {
         }
 
         try {
-            conn = DriverManager.getConnection("jdbc:postgresql://192.168.1.204:5432/LuxyRestaurant","postgres","root" );
+            conn = DriverManager.getConnection("jdbc:postgresql://192.168.0.159:5432/LuxyRestaurant","postgres","root" );
             conn.setAutoCommit( false );
             stmt = conn.createStatement();
         } catch (SQLException e) {

@@ -1,6 +1,8 @@
 package mvila.cat.luxyrestaurantclient;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,10 +17,17 @@ import java.util.List;
 
 public class ComandaClient extends AppCompatActivity implements View.OnClickListener{
 
+    private int iPlatSeleccionat = -1;
+    private ObjComandaClient oComandaClient;
+    private ConnexioBaseDades conBD = new ConnexioBaseDades();
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comanda_client);
+        
+        oComandaClient = new ObjComandaClient();
+        conBD.connectarDB();
     }
 
     @Override
@@ -27,36 +36,97 @@ public class ComandaClient extends AppCompatActivity implements View.OnClickList
         switch ( view.getId() ) {
 
             case R.id.btnPrimerPlat:
+                iPlatSeleccionat = 0;
                 colorButton( view.getId() );
                 omplirLlistPlats( "Primer" );
                 invisibleInformacioOpinions();
                 break;
             case R.id.btnSegonPlat:
+                iPlatSeleccionat = 1;
                 colorButton( view.getId() );
                 omplirLlistPlats( "Segon" );
                 invisibleInformacioOpinions();
                 break;
             case R.id.btnPostres:
+                iPlatSeleccionat = 2;
                 colorButton( view.getId() );
                 omplirLlistPlats( "Postres" );
                 invisibleInformacioOpinions();
                 break;
             case R.id.btnBegudes:
+                iPlatSeleccionat = 3;
                 colorButton( view.getId() );
                 omplirLlistBegudes( "Beguda" );
                 invisibleInformacioOpinions();
                 break;
             case R.id.btnCafes:
+                iPlatSeleccionat = 4;
                 colorButton( view.getId() );
                 omplirLlistBegudes( "Cafe" );
                 invisibleInformacioOpinions();
                 break;
+            case R.id.btnDemanar:
+                afegirPlat();
+                iPlatSeleccionat = -1;
+                break;
             case R.id.btnComanda:
+                mostrarComanda();
+                iPlatSeleccionat = -1;
                 break;
             case R.id.btnEnviar:
+                iPlatSeleccionat = -1;
                 break;
         }
 
+    }
+
+    private void mostrarComanda() {
+
+        String strComanda = "Primer Plat:\n\t" + oComandaClient.getStrPrimerPlat()
+                + "\nSegon Plat:\n\t" + oComandaClient.getStrSegonPalt()
+                + "\nPostres:\n\t" + oComandaClient.getStrPostrs()
+                + "\nBeguda:\n\t" + oComandaClient.getStrBeguda()
+                + "\nCafe:\n\t" + oComandaClient.getStrCafe();
+
+        AlertDialog.Builder NewDialog = new AlertDialog.Builder( this );
+
+        NewDialog
+                .setTitle( "Comanda" )
+                .setMessage( strComanda )
+                .setCancelable( false )
+
+                .setNeutralButton( "Ok" , new DialogInterface.OnClickListener() {
+                    public void onClick( DialogInterface dialogo1 , int id ) {
+                    }
+                })
+                .show();
+    }
+
+    private void afegirPlat() {
+        
+        TextView tvPlat = findViewById( R.id.tvPlat );
+        String strPlat = tvPlat.getText().toString();
+        
+        switch ( iPlatSeleccionat ) {
+            
+            case 0:
+                oComandaClient.setStrPrimerPlat( strPlat );
+                break;
+            case 1:
+                oComandaClient.setStrSegonPalt( strPlat );
+                break;
+            case 2:
+                oComandaClient.setStrPostrs( strPlat );
+                break;
+            case 3:
+                oComandaClient.setStrBeguda( strPlat );
+                break;
+            case 4:
+                oComandaClient.setStrCafe( strPlat );
+                break;
+                
+        }
+        
     }
 
     /**
@@ -161,13 +231,10 @@ public class ComandaClient extends AppCompatActivity implements View.OnClickList
      */
     private List llistaOpinions(int idPlat) {
         List listOpinions = new ArrayList();
-        ConnexioBaseDades conDB = new ConnexioBaseDades();
         String sQuery = "SELECT opinio, puntuacio FROM OpinioAliments WHERE id_aliment = " + idPlat;
 
         try {
-            conDB.connectarDB();
-            System.out.println( sQuery );
-            ResultSet rs = conDB.queryDB( sQuery );
+            ResultSet rs = conBD.queryDB( sQuery );
 
             while ( rs.next() ) {
 
@@ -177,8 +244,6 @@ public class ComandaClient extends AppCompatActivity implements View.OnClickList
             rs.close();
         } catch ( Exception e ) {
             e.printStackTrace();
-        } finally {
-            conDB.desconnectarDB();
         }
 
         return listOpinions;
@@ -193,11 +258,9 @@ public class ComandaClient extends AppCompatActivity implements View.OnClickList
 
         int idAliment = -1;
 
-        ConnexioBaseDades conBD = new ConnexioBaseDades();
         String sQuery = "SELECT id_aliment FROM Aliments WHERE nom = '" + strPlat + "'";
 
         try {
-            conBD.connectarDB();
             ResultSet rs = conBD.queryDB( sQuery );
 
             if ( rs.next() ) {
@@ -206,8 +269,6 @@ public class ComandaClient extends AppCompatActivity implements View.OnClickList
             rs.close();
         } catch ( Exception e ) {
             e.printStackTrace();
-        } finally {
-            conBD.desconnectarDB();
         }
 
         return idAliment;
@@ -221,20 +282,16 @@ public class ComandaClient extends AppCompatActivity implements View.OnClickList
     private void descripcioPlatSeleccionat(String strPlat) {
 
         TextView tvDescripcio = findViewById( R.id.tvDescripcio );
-        ConnexioBaseDades conDB = new ConnexioBaseDades();
         String sQuery = "SELECT descripcio FROM Aliments WHERE nom = '" + strPlat + "'";
 
         try {
-            conDB.connectarDB();
-            ResultSet rs = conDB.queryDB( sQuery );
+            ResultSet rs = conBD.queryDB( sQuery );
 
             if ( rs.next() ) {
                 tvDescripcio.setText( rs.getString( "descripcio" ));
             }
         } catch ( Exception e ) {
             e.printStackTrace();
-        } finally {
-            conDB.desconnectarDB();
         }
 
     }
@@ -256,15 +313,10 @@ public class ComandaClient extends AppCompatActivity implements View.OnClickList
     private List llistaNoms(String tipus, String from) {
 
         List<String> llistaPlats = new ArrayList<>();
-        ConnexioBaseDades conBD = new ConnexioBaseDades();
         String sQuery = "SELECT nom FROM " + from + " WHERE tipus = '" + tipus + "'";
 
         try {
-
-            conBD.connectarDB();
-            ResultSet rs;
-
-            rs = conBD.queryDB( sQuery );
+            ResultSet rs = conBD.queryDB( sQuery );
             while ( rs.next() ) {
                 llistaPlats.add( rs.getString( "nom" ) );
             }
@@ -272,8 +324,6 @@ public class ComandaClient extends AppCompatActivity implements View.OnClickList
 
         } catch ( Exception e ) {
             e.printStackTrace();
-        } finally {
-            conBD.desconnectarDB();
         }
 
         return llistaPlats;
