@@ -8,39 +8,33 @@
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:orientation="vertical"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/btnCrearComanda"
+            android:id="@+id/btnEspaiTreballador"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/background_lila"
             android:onClick="onClick"
-            android:text="Crear Comanda" />
+            android:text="TREBALLADOR"
+            android:textColor="@android:color/background_dark"
+            android:textSize="60sp" />
 
         <Button
-            android:id="@+id/btnEditarComanda"
+            android:id="@+id/btnEspaiClient"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/background_verd"
             android:onClick="onClick"
-            android:text="Editar Comanda" />
+            android:text="CLIENT"
+            android:textSize="60sp" />
 
-        <Button
-            android:id="@+id/btnComandaClient"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="onClick"
-            android:text="Comanda client" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

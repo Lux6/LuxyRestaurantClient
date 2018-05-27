@@ -11,6 +11,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        getSupportActionBar().hide();
     }
 
     @Override
@@ -18,14 +20,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch ( view.getId() ) {
 
-            case R.id.btnCrearComanda:
-                startActivity( new Intent( MainActivity.this , CrearComanda.class ) );
+            case R.id.btnEspaiClient:
+                startActivity( new Intent( MainActivity.this , EspaiClient.class ) );
+                overridePendingTransition(R.anim.inleft, R.anim.outleft);
                 break;
-            case R.id.btnEditarComanda:
-                startActivity( new Intent( MainActivity.this , EditarComanda.class ) );
-                break;
-            case R.id.btnComandaClient:
-                startActivity( new Intent( MainActivity.this , ComandaClient.class ) );
+            case R.id.btnEspaiTreballador:
+                startActivity( new Intent( MainActivity.this , LogInTreballador.class ) );
+                overridePendingTransition(R.anim.inleft, R.anim.outleft);
                 break;
 
         }

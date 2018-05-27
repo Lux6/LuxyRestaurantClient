@@ -20,7 +20,13 @@
         </activity>
         <activity android:name=".ComandaClient" />
         <activity android:name=".CrearComanda" />
-        <activity android:name=".EditarComanda"></activity>
+        <activity android:name=".EditarComanda" />
+        <activity android:name=".EspaiClient" />
+        <activity android:name=".AfegirItemComanda" />
+        <activity android:name=".LogInTreballador" />
+        <activity android:name=".EspaiTreballador" />
+        <activity android:name=".FinalitzarComanda" />
+        <activity android:name=".OpinarComanda"></activity>
     </application>
 
 </manifest>

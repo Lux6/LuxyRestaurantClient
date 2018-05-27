@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="mvila.cat.luxyrestaurantclient.EspaiTreballador">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_lila"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp">
+
+            <ImageButton
+                android:id="@+id/btnBack_espai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:background="@android:color/transparent"
+                android:onClick="onClick"
+                app:srcCompat="@drawable/ic_back_50dp" />
+
+            <TextView
+                android:id="@+id/tvEspaiTreballador"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="Espai Treballador"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@android:color/background_dark"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnCrearComanda"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:background="@drawable/background_verd"
+                android:onClick="onClick"
+                android:text="Crear Comanda"
+                android:textColor="@android:color/background_dark"
+                android:textSize="36sp" />
+
+            <Button
+                android:id="@+id/btnEditarComanda"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:background="@drawable/background_blau_fosc"
+                android:onClick="onClick"
+                android:text="Editar Comanda"
+                android:textColor="@android:color/background_dark"
+                android:textSize="36sp" />
+
+            <Button
+                android:id="@+id/btnFinalitzarComanda"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:background="@drawable/background_vermell"
+                android:onClick="onClick"
+                android:text="Finalitzar Comanda"
+                android:textColor="@android:color/background_dark"
+                android:textSize="36sp" />
+        </LinearLayout>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

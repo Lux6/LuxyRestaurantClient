@@ -23,6 +23,8 @@ public class CrearComanda extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_comanda);
 
+        getSupportActionBar().hide();
+
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         conBD.connectarDB();
 
@@ -84,9 +86,17 @@ public class CrearComanda extends AppCompatActivity implements View.OnClickListe
         switch ( view.getId() ) {
 
             case R.id.btnGenerarComanda:
-                generarComanda();
-                mostrarDadesComanda();
-                omplirSpinnerTaules();
+                try {
+                    generarComanda();
+                    mostrarDadesComanda();
+                    omplirSpinnerTaules();
+                } catch ( Exception e ) {
+                    e.printStackTrace();
+                }
+                break;
+            case R.id.btnBack_crear:
+                finish();
+                overridePendingTransition( R.anim.inright , R.anim.outright );
                 break;
         }
 

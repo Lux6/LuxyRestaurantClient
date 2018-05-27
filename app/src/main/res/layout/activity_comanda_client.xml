@@ -14,15 +14,67 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/holo_blue_bright"
-            android:orientation="horizontal">
+            android:background="@drawable/background_verd"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp">
+
+            <ImageButton
+                android:id="@+id/btnBack_comanda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:background="@android:color/transparent"
+                android:onClick="onClick"
+                app:srcCompat="@drawable/ic_back_50dp" />
+
+            <TextView
+                android:id="@+id/tvComandaClient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="Comanda Client"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@android:color/background_dark"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/btnComanda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:background="@android:color/transparent"
+                android:onClick="onClick"
+                app:srcCompat="@drawable/ic_assignment_50dp" />
+
+            <ImageButton
+                android:id="@+id/btnEnviar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:background="@android:color/transparent"
+                android:onClick="onClick"
+                app:srcCompat="@drawable/ic_send_50dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_blau_clar"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp">
 
             <Button
                 android:id="@+id/btnPrimerPlat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight=".2"
-                android:background="@android:color/holo_blue_bright"
+                android:background="@android:color/transparent"
+                android:longClickable="true"
                 android:onClick="onClick"
                 android:text="Primer Plat" />
 
@@ -31,7 +83,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight=".2"
-                android:background="@android:color/holo_blue_bright"
+                android:background="@android:color/transparent"
                 android:onClick="onClick"
                 android:text="Segon Plat" />
 
@@ -40,7 +92,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight=".2"
-                android:background="@android:color/holo_blue_bright"
+                android:background="@android:color/transparent"
                 android:onClick="onClick"
                 android:text="Postres" />
 
@@ -49,7 +101,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight=".2"
-                android:background="@android:color/holo_blue_bright"
+                android:background="@android:color/transparent"
                 android:onClick="onClick"
                 android:text="Beguda" />
 
@@ -58,35 +110,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight=".2"
-                android:background="@android:color/holo_blue_bright"
+                android:background="@android:color/transparent"
                 android:onClick="onClick"
                 android:text="Cafe / Te" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnComanda"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@android:color/holo_purple"
-                android:onClick="onClick"
-                android:text="Comanda" />
-
-            <Button
-                android:id="@+id/btnEnviar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@android:color/background_dark"
-                android:onClick="onClick"
-                android:text="Enviar"
-                android:textColor="@android:color/background_light" />
         </LinearLayout>
 
         <LinearLayout
@@ -137,9 +164,10 @@
                         android:id="@+id/btnDemanar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@android:color/holo_orange_dark"
+                        android:background="@drawable/background_taronja"
                         android:onClick="onClick"
-                        android:text="Demanar" />
+                        android:text="Demanar"
+                        android:textColor="@android:color/background_dark" />
                 </LinearLayout>
             </ScrollView>
 

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="mvila.cat.luxyrestaurantclient.OpinarComanda">
+
+    <LinearLayout
+        android:id="@+id/linearOpinarComanda"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_verd_blau"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp">
+
+        <ImageButton
+            android:id="@+id/btnBack_opinions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:background="@android:color/transparent"
+            android:onClick="onClick"
+            app:srcCompat="@drawable/ic_back_50dp" />
+
+        <TextView
+            android:id="@+id/tvOpinioComanda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:gravity="center"
+            android:text="Opinio Comanda"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@android:color/background_dark"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearOpinarComanda">
+
+        <ListView
+            android:id="@+id/lvComanda_opinions"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.7" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:orientation="vertical">
+
+            <ListView
+                android:id="@+id/lvOpinions"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".3">
+
+            </ListView>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".7">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/edValoració"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5dp"
+                        android:layout_weight=".80"
+                        android:ems="10"
+                        android:hint="Valorar Plat"
+                        android:inputType="textMultiLine"
+                        android:padding="5dp"
+                        android:textSize="18sp" />
+
+                    <Button
+                        android:id="@+id/btnEnviarOpinio"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".80"
+                        android:background="@drawable/background_taronja"
+                        android:onClick="onClick"
+                        android:text="Enviar"
+                        android:textSize="28sp" />
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
