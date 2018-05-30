@@ -28,6 +28,7 @@ public class LogInTreballador extends AppCompatActivity implements View.OnClickL
         switch ( view.getId() ) {
             case R.id.btnBack_login:
                 finish();
+                overridePendingTransition( R.anim.inright , R.anim.outright );
                 break;
             case R.id.btnLogIn:
                 comprovarUsuari();
@@ -66,6 +67,7 @@ public class LogInTreballador extends AppCompatActivity implements View.OnClickL
 
                 if ( strContrasenya.equals( rs.getString( "contrasenya" ))) {
                     startActivity( new Intent( LogInTreballador.this, EspaiTreballador.class ));
+                    overridePendingTransition(R.anim.inleft, R.anim.outleft);
                 } else {
                     dialogErrorLogIn();
                 }

@@ -14,7 +14,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:background="@drawable/background_blau_fosc"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp">
 
             <ImageButton
                 android:id="@+id/btnBack_afegir"
@@ -22,29 +25,21 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.1"
                 android:background="@android:color/transparent"
+                android:onClick="onClick"
                 app:srcCompat="@drawable/ic_back_50dp" />
 
             <TextView
                 android:id="@+id/tvAfegirItem"
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="0.8"
                 android:gravity="center"
-                android:text="Taula X"
+                android:text="Editar Comanda"
                 android:textAlignment="center"
                 android:textAllCaps="true"
+                android:textColor="@android:color/background_dark"
                 android:textSize="30sp"
                 android:textStyle="bold" />
-
-            <ImageButton
-                android:id="@+id/btnAfegirProducte_afegir"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.1"
-                android:background="@android:color/transparent"
-                android:visibility="invisible"
-                app:srcCompat="@drawable/ic_check_50dp" />
-
         </LinearLayout>
 
         <LinearLayout

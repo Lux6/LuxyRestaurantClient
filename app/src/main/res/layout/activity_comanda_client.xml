@@ -32,7 +32,7 @@
                 android:id="@+id/tvComandaClient"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.8"
+                android:layout_weight="0.7"
                 android:gravity="center"
                 android:text="Comanda Client"
                 android:textAlignment="center"
@@ -40,6 +40,15 @@
                 android:textColor="@android:color/background_dark"
                 android:textSize="30sp"
                 android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/btnCancelar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:background="@android:color/transparent"
+                android:onClick="onClick"
+                app:srcCompat="@drawable/ic_delete_item_50dp" />
 
             <ImageButton
                 android:id="@+id/btnComanda"
@@ -158,7 +167,13 @@
                         android:id="@+id/tvDescripcio"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="TextView" />
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/tvPreu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp" />
 
                     <Button
                         android:id="@+id/btnDemanar"

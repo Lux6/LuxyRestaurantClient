@@ -54,6 +54,7 @@
             android:layout_weight="0.7" />
 
         <LinearLayout
+            android:id="@+id/linearOpinions_opinions"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.3"

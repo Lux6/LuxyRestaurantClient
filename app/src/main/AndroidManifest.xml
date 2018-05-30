@@ -11,22 +11,44 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ComandaClient" />
-        <activity android:name=".CrearComanda" />
-        <activity android:name=".EditarComanda" />
-        <activity android:name=".EspaiClient" />
-        <activity android:name=".AfegirItemComanda" />
-        <activity android:name=".LogInTreballador" />
-        <activity android:name=".EspaiTreballador" />
-        <activity android:name=".FinalitzarComanda" />
-        <activity android:name=".OpinarComanda"></activity>
+        <activity
+            android:name=".ComandaClient"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity
+            android:name=".CrearComanda"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity
+            android:name=".EditarComanda"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity
+            android:name=".EspaiClient"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity
+            android:name=".AfegirItemComanda"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity
+            android:name=".LogInTreballador"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity
+            android:name=".EspaiTreballador"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity
+            android:name=".FinalitzarComanda"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity
+            android:name=".OpinarComanda"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity
+            android:name=".ContrasenyaBack"></activity>
     </application>
 
 </manifest>

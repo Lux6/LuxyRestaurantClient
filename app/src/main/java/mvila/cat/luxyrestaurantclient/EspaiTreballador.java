@@ -35,6 +35,7 @@ public class EspaiTreballador extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.btnBack_espai:
                 finish();
+                overridePendingTransition( R.anim.inright , R.anim.outright );
                 break;
         }
 

@@ -8,11 +8,15 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+
+import static mvila.cat.luxyrestaurantclient.EspaiClient.oComandaClient;
 
 public class OpinarComanda extends AppCompatActivity implements View.OnClickListener{
 
@@ -37,8 +41,8 @@ public class OpinarComanda extends AppCompatActivity implements View.OnClickList
 
     private void omplirLlistaComanda() {
 
+        ((LinearLayout) findViewById(R.id.linearOpinions_opinions)).setVisibility( View.INVISIBLE );
         final ListView lvComanda = findViewById( R.id.lvComanda_opinions);
-
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, lsComanda);
         dataAdapter.setDropDownViewResource(android.R.layout.select_dialog_item);
@@ -51,6 +55,7 @@ public class OpinarComanda extends AppCompatActivity implements View.OnClickList
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 strPlatActual = lvComanda.getItemAtPosition( i ).toString();
+                ((LinearLayout) findViewById(R.id.linearOpinions_opinions)).setVisibility( View.VISIBLE );
                 omplirLlistaOpinions();
             }
         });
@@ -119,21 +124,14 @@ public class OpinarComanda extends AppCompatActivity implements View.OnClickList
 
     private void listComanda() {
 
-        String sQuery = "SELECT DISTINCT(nom) FROM aliments AS a INNER JOIN comandaaliment AS ca ON a.id_aliment = ca.id_aliment WHERE ca.id_comanda =" + strIdComanda;
-
-        System.out.println( sQuery );
-
-        try {
-
-            ResultSet rs = conBD.queryDB( sQuery );
-
-            while ( rs.next() ) {
-                lsComanda.add( rs.getString( "nom" ) );
-            }
-
-            rs.close();
-        } catch ( Exception e ) {
-            e.printStackTrace();
+        if( !oComandaClient.getStrPrimerPlat().equals("")) {
+            lsComanda.add(oComandaClient.getStrPrimerPlat());
+        }
+        if( !oComandaClient.getStrSegonPlat().equals("")) {
+            lsComanda.add(oComandaClient.getStrSegonPlat());
+        }
+        if( !oComandaClient.getStrPostres().equals("")) {
+            lsComanda.add(oComandaClient.getStrPostres());
         }
     }
 
@@ -142,12 +140,34 @@ public class OpinarComanda extends AppCompatActivity implements View.OnClickList
 
         switch ( view.getId() ) {
             case R.id.btnBack_opinions:
-                finish();
+                dialogBackOpinions();
                 break;
             case R.id.btnEnviarOpinio:
                 comprovarValoracio();
                 break;
         }
+    }
+
+    private void dialogBackOpinions() {
+        AlertDialog.Builder NewDialog = new AlertDialog.Builder( this );
+
+        NewDialog
+                .setTitle( "Tancar Opinions" )
+                .setMessage( "Una vegada tanques l'opció d'opinions no podràs tornar a entrar." )
+                .setCancelable( false )
+
+                .setPositiveButton( "Tancar igualment" , new DialogInterface.OnClickListener() {
+                    public void onClick( DialogInterface dialogo1 , int id ) {
+                        EspaiClient.setbOpinar( false );
+                        finish();
+                        overridePendingTransition( R.anim.inright , R.anim.outright );
+                    }
+                })
+                .setNegativeButton( "Cancel·lar" , new DialogInterface.OnClickListener() {
+                    public void onClick( DialogInterface dialogo1 , int id ) {
+                    }
+                })
+                .show();
     }
 
     private void comprovarValoracio() {
@@ -194,6 +214,7 @@ public class OpinarComanda extends AppCompatActivity implements View.OnClickList
             conBD.updateDB( sQuery );
             lsComanda.remove( strPlatActual );
             omplirLlistaComanda();
+            Toast.makeText(this, "Opinió enviada correctament", Toast.LENGTH_SHORT).show();
         } catch ( Exception e ) {
             e.printStackTrace();
         }
